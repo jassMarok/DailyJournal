@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DailyJournal.API.Helpers;
+using DailyJournal.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,9 @@ namespace DailyJournal.API
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
+
+            services.AddScoped<IJournalService, JournalService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
